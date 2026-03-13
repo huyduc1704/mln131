@@ -22,6 +22,7 @@ export default function Introduction() {
           start: "top 60%",
           end: "bottom 80%",
           scrub: 1,
+          refreshPriority: 5,
         },
       });
 
@@ -32,16 +33,16 @@ export default function Introduction() {
         duration: 1,
         ease: "power2.out"
       })
-      .to(highlightRef.current, {
-        color: "#fff",
-        textShadow: "0 0 20px rgba(255, 255, 255, 0.5)",
-        duration: 0.5
-      }, "-=0.2")
-      .to(".intro-image", {
-        opacity: 0.8,
-        scale: 1,
-        duration: 1,
-      }, "-=0.8");
+        .to(highlightRef.current, {
+          color: "#fff",
+          textShadow: "0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.3)",
+          duration: 0.5
+        }, "-=0.2")
+        .to(".intro-image", {
+          opacity: 0.8,
+          scale: 1,
+          duration: 1,
+        }, "-=0.8");
 
     }, sectionRef);
 
@@ -56,15 +57,15 @@ export default function Introduction() {
             <h2 className="intro-line">Bản Chất</h2>
             <div className={`${styles.imageWrapper} intro-image`}>
               <div className={styles.imagePlaceholder}>
-                 <span>Ảnh Minh Họa</span>
+                <span>Ảnh Minh Họa</span>
               </div>
             </div>
           </div>
           <div className={styles.rightCol} ref={textRef}>
             <p className="intro-line">Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam</p>
-            <p className="intro-line">là mô hình tổ chức quyền lực nhà nước,</p>
+            <p className="intro-line">là mô hình tổ chức quyền lực nhà nước của nhân dân, do nhân dân và vì nhân dân,</p>
             <p className="intro-line">
-              trong đó mọi hoạt động của Nhà nước và xã hội được <span ref={highlightRef} className={styles.highlight}>quản lý bằng pháp luật</span>.
+              trong đó mọi hoạt động của Nhà nước và xã hội được tổ chức và quản lý <span ref={highlightRef} className={styles.highlight}>bằng Hiến pháp và pháp luật.</span>
             </p>
           </div>
         </div>

@@ -54,6 +54,7 @@ export default function BentoGallery() {
             end: "+=800%", // 800% scroll distance to cover 8 items
             scrub: 1,
             pin: true,
+            refreshPriority: 10,
           }
         });
 
