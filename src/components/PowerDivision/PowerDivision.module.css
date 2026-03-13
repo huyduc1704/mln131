@@ -96,8 +96,8 @@
   align-items: center;
   justify-content: center;
   flex: 1;
+  margin-right: 85px;
   color: var(--text-muted);
-  padding: 0 20px;
   position: relative;
 }
 
