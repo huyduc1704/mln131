@@ -22,43 +22,42 @@ export default function VideoShowcase() {
     if (!containerRef.current || !wrapperRef.current) return;
 
     const ctx = gsap.context(() => {
+      // 1. Scroll-driven Scaling Timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "bottom bottom",
+          end: "+=1500", // Increased scroll distance for more dramatic zoom
           scrub: 1,
           markers: false,
           refreshPriority: 2,
         },
       });
 
-      // 1. Scale Up Video + Sharp Corners
       tl.to(wrapperRef.current, {
         width: "100%",
         height: "100vh",
-        aspectRatio: "auto",
         borderRadius: 0,
         scale: 1,
         ease: "none",
-      })
-      // 2. Reveal Text
-      .to(`.${styles.title}`, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-      }, "-=0.2")
-      .to(`.${styles.subtitle}`, {
-        opacity: 1,
-        duration: 0.5,
-      }, "-=0.3")
-      // 3. Reveal Controls
-      .to(controlsRef.current, {
-        autoAlpha: 1,
-        duration: 0.5,
-      }, "-=0.1");
+      });
 
-      // We remove the auto-play ScrollTrigger as requested
+      // 4. Entrance Animation: Control Bar
+      gsap.fromTo(
+        controlsRef.current,
+        { autoAlpha: 0, y: 20 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -114,13 +113,6 @@ export default function VideoShowcase() {
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
           />
-          
-          <div className={styles.overlay}>
-            <h2 className={styles.title}>Hành Trình Pháp Quyền</h2>
-            <p className={styles.subtitle}>
-              Kiến tạo tương lai dựa trên nền tảng của Hiến pháp và Pháp luật Việt Nam.
-            </p>
-          </div>
 
           <div className={styles.controlBar} ref={controlsRef}>
             <button className={styles.controlButton} onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
@@ -131,12 +123,12 @@ export default function VideoShowcase() {
               <button className={styles.controlButton} onClick={toggleMute} style={{ width: "40px", height: "40px" }} aria-label={isMuted ? "Unmute" : "Mute"}>
                 {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
               </button>
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.1" 
-                value={volume} 
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={volume}
                 onChange={handleVolumeChange}
                 className={styles.volumeSlider}
               />
