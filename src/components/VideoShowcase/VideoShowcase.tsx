@@ -36,16 +36,16 @@ export default function VideoShowcase() {
         scale: 1,
         ease: "none",
       })
-      // 2. Reveal Text
-      .to(`.${styles.title}`, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-      }, "-=0.2")
-      .to(`.${styles.subtitle}`, {
-        opacity: 1,
-        duration: 0.5,
-      }, "-=0.3");
+        // 2. Reveal Text
+        .to(`.${styles.title}`, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+        }, "-=0.2")
+        .to(`.${styles.subtitle}`, {
+          opacity: 1,
+          duration: 0.5,
+        }, "-=0.3");
 
       // Auto-play management on scroll
       ScrollTrigger.create({
@@ -69,7 +69,7 @@ export default function VideoShowcase() {
             muted
             loop
             playsInline
-            src="/cutri_video/MLN131.mp4"
+            src="/cutri_video/huong_dan.mp4"
           />
           <div className={styles.overlay}>
             <h2 className={styles.title}>Hành Trình Pháp Quyền</h2>
