@@ -1,0 +1,98 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+}
+
+.bgGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(200, 30, 30, 0.15), rgba(0,0,0,1) 60%),
+              conic-gradient(from 180deg at 50% 50%, #2a0845 0deg, #6441A5 180deg, #2a0845 360deg);
+  background-size: 200% auto;
+  opacity: 0.3;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.title :global(.title-word) {
+  display: inline-block;
+}
+
+.title :global(.gradient-text) {
+  background: linear-gradient(135deg, #fff 0%, #ff3b30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 400;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.transitionWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.transitionSvg {
+  width: 100%;
+  height: 100%;
+}
+

@@ -1,0 +1,107 @@
+.section {
+  padding: 120px 20px;
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.header h2 {
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--text-muted);
+}
+
+.diagram {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 0;
+}
+
+.node {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 350px;
+}
+
+.iconWrapper {
+  margin-bottom: 20px;
+  display: inline-flex;
+  padding: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.institution .iconWrapper { color: #ff3b30; }
+.justice .iconWrapper { color: #ff9f0a; }
+.citizens {
+  transform: translateY(100px); /* Push citizens to bottom center */
+  border-color: #0a84ff;
+  box-shadow: 0 0 40px rgba(10, 132, 255, 0.2);
+}
+.citizens .iconWrapper {
+  color: #0a84ff;
+  background: rgba(10, 132, 255, 0.1);
+}
+
+.node h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.linesSvg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .diagram {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .citizens {
+    transform: none;
+    order: -1; /* Citizens top */
+  }
+  .linesSvg {
+    display: none; /* Fallback for mobile */
+  }
+}

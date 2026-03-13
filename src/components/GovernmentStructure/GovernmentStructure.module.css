@@ -1,0 +1,254 @@
+.section {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 100px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0.8;
+}
+
+.header h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.header p {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.zoomContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.topNode {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 20px 60px;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  border-radius: 100px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.lines {
+  width: 100%;
+  height: 80px;
+  margin-top: -5px;
+  z-index: 1;
+}
+
+.branches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.branchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.node {
+  background: rgba(255,255,255,0.03);
+  border: 2px solid rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-top-width: 6px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.node h3 {
+  font-size: clamp(24px, 2vw, 36px);
+  margin-bottom: 5px;
+}
+
+.node p {
+  color: var(--text-muted);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.clickHint {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.node:hover .clickHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal Overlay Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContent {
+  background: #111;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 24px;
+  padding: 50px 40px;
+  position: relative;
+  border-top: 8px solid; /* Dynamic color */
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ccc;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.modalTitle {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.modalSubtitle {
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.modalDetails h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.modalDetails ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalDetails li {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #bbb;
+  padding-left: 30px;
+  position: relative;
+}
+
+.modalDetails li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .branches {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .lines {
+    display: none;
+  }
+  
+  .branchWrapper {
+    width: 100%;
+  }
+
+  /* Optional vertical lines for mobile */
+  .branchWrapper::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .branchWrapper:first-child::before {
+    top: -20px;
+    height: 20px;
+  }
+}
