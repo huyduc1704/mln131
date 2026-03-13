@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero";
 import Introduction from "@/components/Introduction/Introduction";
 import BentoGallery from "@/components/BentoGallery/BentoGallery";
 import PartyLeadership from "@/components/PartyLeadership/PartyLeadership";
+import VideoShowcase from "@/components/VideoShowcase/VideoShowcase";
 import GovernmentStructure from "@/components/GovernmentStructure/GovernmentStructure";
 import PowerDivision from "@/components/PowerDivision/PowerDivision";
 import Accountability from "@/components/Accountability/Accountability";
@@ -20,6 +21,7 @@ export default function Page() {
       <Introduction />
       <BentoGallery />
       <PartyLeadership />
+      <VideoShowcase />
       <GovernmentStructure />
       <PowerDivision />
       <Accountability />
