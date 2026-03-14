@@ -62,7 +62,7 @@
 .institution .iconWrapper { color: #ff3b30; }
 .justice .iconWrapper { color: #ff9f0a; }
 .citizens {
-  transform: translateY(100px); /* Push citizens to bottom center */
+  transform: translateY(120px); /* Adjusted for better connection flow */
   border-color: #0a84ff;
   box-shadow: 0 0 40px rgba(10, 132, 255, 0.2);
 }

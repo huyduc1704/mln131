@@ -26,7 +26,7 @@ export default function Accountability() {
 
       tl.from(".center-node", { scale: 0, opacity: 0, duration: 1, ease: "back.out(1.5)" })
         .from(".side-node", { opacity: 0, y: 50, duration: 1, stagger: 0.3 }, "-=0.5")
-        .from(".connector", { opacity: 0, strokeDashoffset: "100", duration: 1 }, "-=0.5");
+        .from(".connector", { strokeDashoffset: 500, opacity: 0, duration: 1.5, stagger: 0.2 }, "-=0.5");
 
     }, containerRef);
     
@@ -66,16 +66,32 @@ export default function Accountability() {
           </div>
 
           {/* Connectors */}
-          <svg className={styles.linesSvg} preserveAspectRatio="none">
-            <path className="connector" d="M200,100 C 300,100 300,200 450,200" stroke="url(#gradient)" strokeWidth="3" fill="none" strokeDasharray="100" strokeDashoffset="0" />
-            <path className="connector" d="M700,100 C 600,100 600,200 450,200" stroke="url(#gradient)" strokeWidth="3" fill="none" strokeDasharray="100" strokeDashoffset="0" />
-            
+          <svg className={styles.linesSvg} viewBox="0 0 1000 400" preserveAspectRatio="none">
             <defs>
-               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                 <stop offset="0%" stopColor="#ff3b30" />
-                 <stop offset="100%" stopColor="#0a84ff" />
-               </linearGradient>
+              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(255, 59, 48, 0.5)" />
+                <stop offset="50%" stopColor="rgba(10, 132, 255, 1)" />
+                <stop offset="100%" stopColor="rgba(255, 159, 10, 0.5)" />
+              </linearGradient>
             </defs>
+            <path 
+              className="connector" 
+              d="M 280,150 C 350,150 380,300 450,300" 
+              stroke="url(#lineGradient)" 
+              strokeWidth="2" 
+              fill="none" 
+              strokeDasharray="500" 
+              strokeDashoffset="0"
+            />
+            <path 
+              className="connector" 
+              d="M 720,150 C 650,150 620,300 550,300" 
+              stroke="url(#lineGradient)" 
+              strokeWidth="2" 
+              fill="none" 
+              strokeDasharray="500" 
+              strokeDashoffset="0"
+            />
           </svg>
 
         </div>

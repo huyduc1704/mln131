@@ -1,11 +1,12 @@
 .countdownSection {
-  width: 400px;
-  height: 250px;
+  width: 600px;
+  height: 350px;
   padding: 40px 0;
-  background-color: #f4ead8;
+  background-color: rgba(201, 157, 87, 0.459);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: center;
+  align-items: center;
   z-index: 10;
   position: relative;
   border-radius: 20px;
@@ -19,12 +20,25 @@
 }
 
 .label {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: 4px;
-  color: #ff3b30;
+  color: #ff0d00;
+  text-shadow: 0 0 20px rgb(255, 255, 255);
   text-transform: uppercase;
-  opacity: 0.8;
+  opacity: 0.9;
+  animation: flash 0.3s infinite alternate;
+}
+
+@keyframes flash {
+  from {
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(255, 13, 0, 0.8));
+  }
+  to {
+    opacity: 0.3;
+    filter: brightness(0.8);
+  }
 }
 
 .timer {
@@ -41,35 +55,35 @@
 }
 
 .number {
-  font-size: clamp(48px, 6vw, 72px);
-  font-weight: 800;
+  font-size: clamp(60px, 10vw, 100px);
+  font-weight: 900;
   color: #ffd700;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
   font-variant-numeric: tabular-nums;
 }
 
 .unit {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.4);
-  margin-top: 8px;
-  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(245, 242, 242, 0.6);
+  margin-top: 10px;
+  letter-spacing: 3px;
 }
 
 .separator {
-  font-size: 48px;
+  font-size: 60px;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.2);
-  margin-bottom: 25px;
+  color: rgba(252, 249, 249, 0.4);
+  margin-bottom: 35px;
 }
 
 .dateLabel {
-  font-size: 16px;
-  font-weight: 600;
-  color: #000000;
-  opacity: 0.6;
-  letter-spacing: 2px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #d4d3d3;
+  opacity: 0.8;
+  letter-spacing: 3px;
 }
 
 @media (max-width: 600px) {
