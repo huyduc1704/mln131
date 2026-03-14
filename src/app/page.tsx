@@ -25,7 +25,7 @@ export default function Page() {
       <PowerDivision />
       <Accountability />
       <Quiz />
-      <Kahoot />
+      {/* <Kahoot /> */}
     </main>
   );
 }
