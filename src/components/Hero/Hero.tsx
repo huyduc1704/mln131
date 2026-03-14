@@ -117,8 +117,7 @@ export default function Hero() {
 
       <div className={styles.content}>
         <h1 className={styles.title}>
-          <span className="title-word">Mô hình</span> <br />
-          <span className="title-word">Nhà nước Pháp quyền</span> <br />
+          <span className="title-word">Mô hình Nhà nước Pháp quyền</span> <br />
           <span className="title-word gradient-text">XHCN Việt Nam</span>
         </h1>
 
@@ -145,9 +144,9 @@ export default function Hero() {
         >
           <defs>
             <linearGradient id="swipeGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-               <stop offset="0% " stopColor="#0a0a0a" />
-               <stop offset="50%" stopColor="#ff3b30" />
-               <stop offset="100%" stopColor="#0a0a0a" />
+              <stop offset="0% " stopColor="#0a0a0a" />
+              <stop offset="50%" stopColor="#ff3b30" />
+              <stop offset="100%" stopColor="#0a0a0a" />
             </linearGradient>
           </defs>
           <path

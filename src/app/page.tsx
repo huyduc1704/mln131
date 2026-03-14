@@ -22,7 +22,6 @@ export default function Page() {
       <BentoGallery />
       <PartyLeadership />
       <VideoShowcase />
-      <GovernmentStructure />
       <PowerDivision />
       <Accountability />
       <Quiz />

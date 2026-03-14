@@ -3,32 +3,11 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FileText, Users, Scale, ArrowRight } from "lucide-react";
 import styles from "./PowerDivision.module.css";
-
-const powers = [
-  {
-    title: "Lập pháp",
-    icon: <FileText size={40} className={styles.icon} />,
-    color: "#ff3b30",
-    desc: "Đề ra luật và Hiến pháp"
-  },
-  {
-    title: "Hành pháp",
-    icon: <Users size={40} className={styles.icon} />,
-    color: "#0a84ff",
-    desc: "Thực thi pháp luật"
-  },
-  {
-    title: "Tư pháp",
-    icon: <Scale size={40} className={styles.icon} />,
-    color: "#ff9f0a",
-    desc: "Bảo vệ công lý"
-  }
-];
 
 export default function PowerDivision() {
   const containerRef = useRef<HTMLElement>(null);
+  const diagramRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -39,26 +18,25 @@ export default function PowerDivision() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 70%",
-          end: "bottom 80%",
-          scrub: 1,
+          start: "top 80%",
+          toggleActions: "play reverse play reverse",
         }
       });
 
       tl.from(".flow-node", {
         opacity: 0,
-        x: -50,
-        stagger: 0.3,
-        duration: 1,
+        y: 20,
+        stagger: 0.05,
+        duration: 0.6,
         ease: "power2.out"
       })
-      .from(".flow-arrow", {
+      .from(".flow-line", {
         opacity: 0,
-        scaleX: 0,
-        transformOrigin: "left center",
-        stagger: 0.3,
-        duration: 1
-      }, "-=0.8");
+        scale: 0,
+        transformOrigin: "center center",
+        duration: 0.4,
+        stagger: 0.02
+      }, "-=0.4");
 
     }, containerRef);
 
@@ -66,32 +44,102 @@ export default function PowerDivision() {
   }, []);
 
   return (
-    <section className={styles.section} ref={containerRef}>
+    <section className={styles.section} ref={containerRef} id="power-division">
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Phân Công Quyền Lực</h2>
-          <p>Sự phối hợp chặt chẽ, nhịp nhàng theo nguyên tắc thống nhất quyền lực</p>
+          <div className={styles.titleGroup}>
+            <h1>SƠ ĐỒ</h1>
+            <h2>BỘ MÁY NHÀ NƯỚC</h2>
+            <p>THEO HIẾN PHÁP 2013 (SỬA ĐỔI 2025)</p>
+          </div>
         </div>
-        
-        <div className={styles.horizontalFlow}>
-          {powers.map((p, i) => (
-            <div key={i} className={styles.flowItem}>
-              <div className={`${styles.node} flow-node`} style={{ '--accent': p.color } as React.CSSProperties}>
-                <div className={styles.iconWrapper}>{p.icon}</div>
-                <div className={styles.content}>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
+
+        <div className={styles.diagramWrapper} ref={diagramRef}>
+          {/* Level 1: Quốc hội & Hội đồng bầu cử quốc gia */}
+          <div className={styles.level1}>
+            <div className={`${styles.node} ${styles.qhNode} flow-node`}>Quốc hội</div>
+            <div className={styles.hdbcContainer}>
+              <div className={`${styles.hHorizontalLine} flow-line`}></div>
+              <div className={`${styles.node} flow-node`}>Hội đồng bầu cử<br/>quốc gia</div>
+            </div>
+          </div>
+
+          {/* Main Vertical Line & Chủ tịch nước */}
+          <div className={`${styles.mainVerticalLine} flow-line`}>
+            <div className={styles.ctnContainer}>
+              <div className={`${styles.node} flow-node`}>Chủ tịch nước</div>
+              <div className={`${styles.hHorizontalLine} flow-line`}></div>
+            </div>
+          </div>
+
+          {/* Branches Level */}
+          <div className={styles.branchesLevel}>
+            <div className={`${styles.branchesListLine} flow-line`}></div>
+            <div className={styles.branchesList}>
+              
+              {/* Branch 1: Chính phủ */}
+              <div className={styles.branch}>
+                <div className={`${styles.branchDropLine} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>Chính phủ</div>
+                
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                
+                <div className={styles.subTree}>
+                  <div className={`${styles.subColumnsLine} flow-line`}></div>
+                  <div className={styles.subColumns}>
+                    <div className={styles.subCol}>
+                      <div className={`${styles.subColDropLine} flow-line`}></div>
+                      <div className={`${styles.node} flow-node`}>Bộ, cơ quan<br/>ngang Bộ</div>
+                      <div className={`${styles.verticalLink} flow-line`}></div>
+                      <div className={`${styles.node} flow-node`}>Sở</div>
+                    </div>
+                    <div className={styles.subCol}>
+                      <div className={`${styles.subColDropLine} flow-line`}></div>
+                      <div className={`${styles.node} flow-node`}>UBND<br/>cấp tỉnh</div>
+                      <div className={`${styles.verticalLink} flow-line`}></div>
+                      <div className={`${styles.node} flow-node`}>UBND<br/>cấp xã</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              {i < powers.length - 1 && (
-                <div className={`${styles.arrow} flow-arrow`}>
-                  <ArrowRight size={32} />
-                  <span className={styles.arrowText}>Kiểm soát & Phối hợp</span>
-                </div>
-              )}
+
+              {/* Branch 2: HĐND */}
+              <div className={styles.branch}>
+                <div className={`${styles.branchDropLine} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>HĐND<br/>cấp tỉnh</div>
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>HĐND<br/>cấp xã</div>
+              </div>
+
+              {/* Branch 3: TAND */}
+              <div className={styles.branch}>
+                <div className={`${styles.branchDropLine} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>TAND<br/>tối cao</div>
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>TAND<br/>cấp tỉnh</div>
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>TAND<br/>khu vực</div>
+              </div>
+
+              {/* Branch 4: VKSND */}
+              <div className={styles.branch}>
+                <div className={`${styles.branchDropLine} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>VKSND<br/>tối cao</div>
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>VKSND<br/>cấp tỉnh</div>
+                <div className={`${styles.verticalLink} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>VKSND<br/>khu vực</div>
+              </div>
+
+              {/* Branch 5: Kiểm toán */}
+              <div className={styles.branch}>
+                <div className={`${styles.branchDropLine} flow-line`}></div>
+                <div className={`${styles.node} flow-node`}>Kiểm toán<br/>Nhà nước</div>
+              </div>
+
             </div>
-          ))}
+          </div>
+
         </div>
       </div>
     </section>

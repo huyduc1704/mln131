@@ -19,8 +19,8 @@ export default function Quiz() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        
-        <motion.div 
+
+        <motion.div
           className={styles.glassWindow}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export default function Quiz() {
 
           <div className={styles.windowBody}>
             <h2 className={styles.question}>Cơ quan nào nắm quyền ban hành luật?</h2>
-            
+
             <div className={styles.options}>
               {options.map((opt) => (
                 <button
@@ -53,8 +53,8 @@ export default function Quiz() {
                   disabled={selected !== null}
                 >
                   <span className={styles.optRing}>
-                     {selected === opt.id && isCorrect && <Check size={16} />}
-                     {selected === opt.id && !isCorrect && <X size={16} />}
+                    {selected === opt.id && isCorrect && <Check size={16} />}
+                    {selected === opt.id && !isCorrect && <X size={16} />}
                   </span>
                   {opt.name}
                 </button>
@@ -63,7 +63,7 @@ export default function Quiz() {
 
             <AnimatePresence>
               {selected && (
-                <motion.div 
+                <motion.div
                   className={styles.feedback}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}

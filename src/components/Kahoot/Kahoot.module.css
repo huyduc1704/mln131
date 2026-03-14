@@ -1,36 +1,41 @@
 .section {
   padding: 100px 20px;
-  background-color: #f2f2f2;
-  color: #1a1a1a;
+  background-color: #0c0c0c;
+  color: #fff;
   text-align: center;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
-  background: white;
-  padding: 60px 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  padding: 80px 40px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
 }
 
-.kahootLogo {
-  font-size: 42px;
-  font-weight: 800;
-  color: #46178f; /* Kahoot brand purple */
-  margin-bottom: 20px;
+.gimkitLogo {
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
 }
 
 .description {
   font-size: 18px;
-  color: #555;
-  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 48px;
   line-height: 1.6;
 }
 
@@ -38,43 +43,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  background-color: #333333;
+  gap: 12px;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  padding: 16px 40px;
-  border-radius: 8px;
+  padding: 20px 50px;
+  border-radius: 100px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
   cursor: pointer;
+  box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
 }
 
 .button:hover {
-  background-color: #000000;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  .section {
-    background-color: #121212;
-  }
+@media (max-width: 600px) {
   .container {
-    background: #1e1e1e;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 60px 24px;
   }
-  .title, .description {
-    color: #fff;
+  .title {
+    font-size: 28px;
   }
-  .kahootLogo {
-    color: #8c6cfc;
-  }
-  .button {
-    background-color: #46178f;
-  }
-  .button:hover {
-    background-color: #5d28b8;
+  .gimkitLogo {
+    font-size: 40px;
   }
 }

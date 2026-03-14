@@ -1,82 +1,46 @@
 .section {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px 20px;
-  background-color: var(--background);
-  color: var(--foreground);
-  border-bottom: 1px solid var(--border);
+  padding: 100px 5%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.container {
   position: relative;
-  z-index: 5;
-}
-
-.title {
-  font-size: clamp(24px, 4vw, 36px);
-  margin-bottom: 80px;
-  font-weight: 600;
-  text-align: center;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.diagram {
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+}
+
+.text {
+  color: #ffd700;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  line-height: 1.4;
+  box-sizing: border-box;
+  padding: 2%;
   width: 100%;
-  max-width: 800px;
-}
-
-.nodeText {
-  font-size: clamp(40px, 6vw, 80px);
+  text-align: center;
+  perspective: 1000px;
   font-weight: 800;
-  margin: 0;
-  text-align: center;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+               0 0 20px rgba(255, 215, 0, 0.5),
+               0 0 40px rgba(255, 165, 0, 0.3);
 }
 
-.partyText {
-  background: linear-gradient(to bottom right, #ff3b30, #ff9f0a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Removed .buttonWrapper and .button styles as they are no longer needed */
+
+/* split-type specific styles */
+.text :global(.char), .text :global(.word), .text :global(.line) {
+  display: inline-block;
 }
 
-.stateText {
-  color: #fff;
-}
-
-/* Connectors */
-.connectorArea {
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.verticalLineContainer {
-  width: 2px;
-  height: 100%;
-  background: rgba(255,255,255,0.1);
-  position: relative;
-}
-
-.drawVertical {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  background: linear-gradient(to bottom, #ff3b30, rgba(255,255,255,0.8));
-  height: 0%; /* Animated */
-}
-
-/* Description */
-.description {
-  margin-top: 60px;
-  font-size: clamp(20px, 3vw, 28px);
-  color: var(--text-muted);
-  text-align: center;
-  max-width: 600px;
-  line-height: 1.5;
-  font-weight: 400;
+.text :global(.line) {
+  overflow: hidden; /* Helpful for some reveal animations */
 }
